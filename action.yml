@@ -95,8 +95,7 @@ runs:
       id: tutor-build-image
       shell: bash
       run: |
-        tutor images build ${{ inputs.openedx-repository != '' && format('-a EDX_PLATFORM_REPOSITORY={0}', inputs.openedx-repository) || '' }} \
-          ${{ inputs.openedx-version != '' && format('-a EDX_PLATFORM_VERSION={0}', inputs.openedx-version) || '' }} openedx
+        tutor images build https://github.com/SixNines/edx-platform
 
     - name: Push the image
       id: docker-push-image
