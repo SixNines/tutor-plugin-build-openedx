@@ -95,7 +95,7 @@ runs:
       id: tutor-build-image
       shell: bash
       run: |
-        tutor images build SixNines/edx-platform
+        tutor images build openedx
 
     - name: Push the image
       id: docker-push-image
