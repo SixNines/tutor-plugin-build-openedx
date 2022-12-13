@@ -95,7 +95,9 @@ runs:
       id: tutor-build-image
       shell: bash
       run: |
-        tutor images build openedx
+        tutor images build openedx \
+          --build-arg EDX_PLATFORM_REPOSITORY=${{ inputs.openedx-repository }} \
+          --build-arg EDX_PLATFORM_VERSION=${{ inputs.openedx-version }}
 
     - name: Push the image
       id: docker-push-image
