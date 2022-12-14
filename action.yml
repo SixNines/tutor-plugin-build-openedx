@@ -28,6 +28,10 @@ inputs:
     description: 'The version of openedx to deploy. This corresponds to a branch or tag name in the openedx repository. Defaults to an empty string, which uses the tutor default'
     required: false
     default: ''
+  repository-token:
+    description: 'Token for private repositories.'
+    required: false
+    default: ''
 outputs:
   docker-container-url:
     description: 'The URL of the AWS ECR Docker container that was created and uploaded'
@@ -98,7 +102,8 @@ runs:
         tutor images build openedx \
           --build-arg EDX_PLATFORM_REPOSITORY=${{ inputs.openedx-repository }} \
           --build-arg EDX_PLATFORM_VERSION=${{ inputs.openedx-version }}
-      GITHUB_TOKEN: ${{ secrets.PAT }}
+      env:
+        GITHUB_TOKEN: ${{ inputs.repository-token }}
 
     - name: Push the image
       id: docker-push-image
