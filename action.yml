@@ -101,7 +101,7 @@ runs:
       run: |
         tutor images build openedx \
           --build-arg EDX_PLATFORM_REPOSITORY=https://${GITHUB_TOKEN}@github.com/SixNines/edx-platform.git \
-          --build-arg EDX_PLATFORM_VERSION=${{ inputs.openedx-version }}
+          --build-arg EDX_PLATFORM_VERSION=v2.1.0
       env:
         GITHUB_TOKEN: ${{ inputs.repository-token }}
 
