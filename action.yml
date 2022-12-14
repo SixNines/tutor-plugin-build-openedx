@@ -100,10 +100,11 @@ runs:
       shell: bash
       run: |
         tutor images build openedx \
-          --build-arg EDX_PLATFORM_REPOSITORY=${{ inputs.openedx-repository }} \
+          --build-arg EDX_PLATFORM_REPOSITORY=https://x-access-token:${GITHUB_TOKEN}@github.com/SixNines/edx-platform.git \
           --build-arg EDX_PLATFORM_VERSION=${{ inputs.openedx-version }}
       env:
         GITHUB_TOKEN: ${{ inputs.repository-token }}
+
 
     - name: Push the image
       id: docker-push-image
