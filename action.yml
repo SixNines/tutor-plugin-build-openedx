@@ -98,6 +98,7 @@ runs:
         tutor images build openedx \
           --build-arg EDX_PLATFORM_REPOSITORY=${{ inputs.openedx-repository }} \
           --build-arg EDX_PLATFORM_VERSION=${{ inputs.openedx-version }}
+      GITHUB_TOKEN: ${{ secrets.PAT }}
 
     - name: Push the image
       id: docker-push-image
