@@ -100,7 +100,8 @@ runs:
       shell: bash
       run: |
         tutor images build openedx \
-          --build-arg EDX_PLATFORM_REPOSITORY=${{ inputs.openedx-repository }}
+          --build-arg EDX_PLATFORM_REPOSITORY=${{ inputs.openedx-repository }} \
+          --build-arg EDX_PLATFORM_VERSION=${{ inputs.openedx-version }}
       env:
         GITHUB_TOKEN: ${{ inputs.repository-token }}
 
